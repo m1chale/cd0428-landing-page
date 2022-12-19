@@ -48,7 +48,7 @@ function buildLinkFragment(navSections) {
     const li = document.createElement("li");
     const a = document.createElement("a");
 
-    a.href = "#" + value;
+    a.dataset.linkId = value;
     a.textContent = key;
     a.classList.add("menu__link");
     li.appendChild(a);
@@ -68,8 +68,11 @@ function buildLinkFragment(navSections) {
 function buildNavigation() {
   const navSections = getNavSections();
   const linkFrag = buildLinkFragment(navSections);
+  const navBar = document.querySelector("#navbar__list");
 
-  document.querySelector("#navbar__list").appendChild(linkFrag);
+  navBar.addEventListener("click", onNavBarClick);
+
+  navBar.appendChild(linkFrag);
 }
 
 // Add class 'active' to section when near top of viewport
@@ -88,5 +91,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 // Scroll to section on link click
+function onNavBarClick(event) {
+  event.preventDefault();
+
+  document
+    .getElementById(event.target.dataset.linkId)
+    .scrollIntoView({ behavior: "smooth" });
+}
 
 // Set sections as active
