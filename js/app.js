@@ -72,10 +72,10 @@ function togglePageUpVisibility(show) {
 //show header during scrolling, hide afterwards
 function toggleHeaderVisibility() {
   const header = document.querySelector(".page__header");
-  header.style.display = "block";
+  header.classList.remove("hidden");
 
   setTimeout(() => {
-    header.style.display = "none";
+    header.classList.add("hidden");
   }, 3000);
 }
 
