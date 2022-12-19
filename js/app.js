@@ -76,6 +76,19 @@ function buildNavigation() {
 }
 
 // Add class 'active' to section when near top of viewport
+function toogleActice(event) {
+  for (const section of document.getElementsByTagName("section")) {
+    const box = section.getBoundingClientRect();
+
+    if (box.top <= 200 && box.bottom >= 200) {
+      section.classList.add("active");
+      console.log(section.id + " active");
+    } else {
+      section.classList.remove("active");
+      console.log(section.id + " remove");
+    }
+  }
+}
 
 // Scroll to anchor ID using scrollTO event
 
@@ -100,3 +113,4 @@ function onNavBarClick(event) {
 }
 
 // Set sections as active
+document.addEventListener("scroll", toogleActice);
