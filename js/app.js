@@ -22,7 +22,7 @@
  * Define Global Variables
  *
  */
-
+let navigation = [];
 /**
  * End Global Variables
  * Start Helper Functions
@@ -30,11 +30,11 @@
  */
 
 function getNavSections() {
-  const navSections = new Map();
+  const navSections = [];
 
   for (section of document.getElementsByTagName("section")) {
     if (section.dataset.nav) {
-      navSections.set(section.dataset.nav, section.getAttribute("id"));
+      navSections.push(section);
     }
   }
 
@@ -44,16 +44,18 @@ function getNavSections() {
 function buildLinkFragment(navSections) {
   const linkFrag = new DocumentFragment();
 
-  for (const [key, value] of navSections.entries()) {
+  navSections.forEach((section) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
 
-    a.dataset.linkId = value;
-    a.textContent = key;
+    a.dataset.linkId = section.getAttribute("id");
+    a.textContent = section.dataset.nav;
     a.classList.add("menu__link");
     li.appendChild(a);
     linkFrag.appendChild(li);
-  }
+
+    navigation.push({ section, li });
+  });
 
   return linkFrag;
 }
@@ -76,18 +78,18 @@ function buildNavigation() {
 }
 
 // Add class 'active' to section when near top of viewport
-function toogleActice(event) {
-  for (const section of document.getElementsByTagName("section")) {
-    const box = section.getBoundingClientRect();
+function toogleActive() {
+  navigation.forEach((navItem) => {
+    const box = navItem.section.getBoundingClientRect();
 
     if (box.top <= 200 && box.bottom >= 200) {
-      section.classList.add("active");
-      console.log(section.id + " active");
+      navItem.section.classList.add("active");
+      navItem.li.classList.add("active-nav");
     } else {
-      section.classList.remove("active");
-      console.log(section.id + " remove");
+      navItem.section.classList.remove("active");
+      navItem.li.classList.remove("active-nav");
     }
-  }
+  });
 }
 
 // Scroll to anchor ID using scrollTO event
@@ -105,12 +107,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 // Scroll to section on link click
 function onNavBarClick(event) {
-  event.preventDefault();
+  if (event.target.tagName == "A") {
+    event.preventDefault();
 
-  document
-    .getElementById(event.target.dataset.linkId)
-    .scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById(event.target.dataset.linkId)
+      .scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 // Set sections as active
-document.addEventListener("scroll", toogleActice);
+document.addEventListener("scroll", toogleActive);
