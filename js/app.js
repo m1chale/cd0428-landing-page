@@ -51,6 +51,7 @@ function buildLinkFragment(navSections) {
     a.dataset.linkId = section.getAttribute("id");
     a.textContent = section.dataset.nav;
     a.classList.add("menu__link");
+
     li.appendChild(a);
     linkFrag.appendChild(li);
 
