@@ -87,6 +87,7 @@ section {
   background: #333;
   color: #fff;
   transition: ease 0.3s all;
+  cursor: pointer;
 }
 
 /* Header Styles */
