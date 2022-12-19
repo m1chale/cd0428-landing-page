@@ -60,6 +60,15 @@ function buildLinkFragment(navSections) {
   return linkFrag;
 }
 
+//show or hide page-up button depending on current scroll
+function togglePageUpVisibility(show) {
+  if (show) {
+    document.querySelector(".page__button-up").classList.remove("hidden");
+  } else {
+    document.querySelector(".page__button-up").classList.add("hidden");
+  }
+}
+
 //show header during scrolling, hide afterwards
 function toggleHeaderVisibility() {
   const header = document.querySelector(".page__header");
@@ -68,6 +77,14 @@ function toggleHeaderVisibility() {
   setTimeout(() => {
     header.style.display = "none";
   }, 3000);
+}
+
+function scrollUp() {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
 }
 
 /**
@@ -101,6 +118,8 @@ function toogleActive() {
     }
   });
 
+  togglePageUpVisibility(window.pageYOffset > window.innerWidth);
+
   toggleHeaderVisibility();
 }
 
@@ -115,6 +134,10 @@ function toogleActive() {
 // Build menu
 document.addEventListener("DOMContentLoaded", (event) => {
   buildNavigation();
+
+  document
+    .querySelector(".page__button-up")
+    .addEventListener("click", scrollUp);
 });
 
 // Scroll to section on link click

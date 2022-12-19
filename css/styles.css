@@ -21,6 +21,10 @@ body {
   color: #fff;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Typeography General*/
 h1 {
   font-family: "Fira Sans", sans-serif;
@@ -112,6 +116,20 @@ section {
 
 .page__footer p {
   color: #fff;
+}
+
+/* Button Styles */
+.page__button-up {
+  /* display: none; */
+  cursor: pointer;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+
+.page__button-up img {
+  width: 50px;
+  color: blue;
 }
 
 /* ---- Theme Rules ---- */
