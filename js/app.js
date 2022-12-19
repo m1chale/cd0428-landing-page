@@ -60,6 +60,21 @@ function buildLinkFragment(navSections) {
   return linkFrag;
 }
 
+//check which section is currently viewed and set to active
+function toggleActiveSection() {
+  navigation.forEach((navItem) => {
+    const box = navItem.section.getBoundingClientRect();
+
+    if (box.top <= 200 && box.bottom >= 200) {
+      navItem.section.classList.add("active");
+      navItem.li.classList.add("active-nav");
+    } else {
+      navItem.section.classList.remove("active");
+      navItem.li.classList.remove("active-nav");
+    }
+  });
+}
+
 //show or hide page-up button depending on current scroll
 function togglePageUpVisibility(show) {
   if (show) {
@@ -105,18 +120,8 @@ function buildNavigation() {
 }
 
 // Add class 'active' to section when near top of viewport
-function toogleActive() {
-  navigation.forEach((navItem) => {
-    const box = navItem.section.getBoundingClientRect();
-
-    if (box.top <= 200 && box.bottom >= 200) {
-      navItem.section.classList.add("active");
-      navItem.li.classList.add("active-nav");
-    } else {
-      navItem.section.classList.remove("active");
-      navItem.li.classList.remove("active-nav");
-    }
-  });
+function doScrollAdjustments() {
+  toggleActiveSection();
 
   togglePageUpVisibility(window.pageYOffset > window.innerWidth);
 
@@ -152,4 +157,4 @@ function onNavBarClick(event) {
 }
 
 // Set sections as active
-document.addEventListener("scroll", toogleActive);
+document.addEventListener("scroll", doScrollAdjustments);
