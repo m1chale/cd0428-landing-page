@@ -79,7 +79,7 @@ function toggleHeaderVisibility() {
   }, 3000);
 }
 
-function scrollUp() {
+function scrollTop() {
   window.scrollTo({
     top: 0,
     left: 0,
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   document
     .querySelector(".page__button-up")
-    .addEventListener("click", scrollUp);
+    .addEventListener("click", scrollTop);
 });
 
 // Scroll to section on link click
