@@ -143,7 +143,7 @@ function buildNavigation() {
 function doScrollAdjustments() {
   toggleActiveSection();
 
-  togglePageUpVisibility(window.pageYOffset > window.innerWidth);
+  togglePageUpVisibility(window.pageYOffset > window.innerHeight);
 
   toggleHeaderVisibility();
 }
