@@ -1,13 +1,17 @@
 # Landing Page Project
 
-## Table of Contents
+## Project description
 
-* [Instructions](#instructions)
+The Project consits of a single page with different sections about my home town.
 
-## Instructions
+## Usage
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The project was used to learn how to dynamically add content to the dom with javascript
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Dependencies
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The project uses HTML, CSS and Javascript.
+No libraries or third-party-tools are used.
+
+Thanks for reading
+Michael
