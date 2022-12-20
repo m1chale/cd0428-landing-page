@@ -67,7 +67,7 @@ section {
 }
 
 section.expanded {
-  min-height: 80vh;
+  min-height: 50vh;
 }
 
 /* ---- Module Rules ---- */
