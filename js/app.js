@@ -155,7 +155,6 @@ function buildNavigation() {
   const navBar = document.querySelector("#navbar__list");
 
   navBar.addEventListener("click", onNavBarClick);
-
   navBar.appendChild(linkFrag);
 }
 
@@ -164,9 +163,7 @@ function buildNavigation() {
  */
 function doScrollAdjustments() {
   toggleActiveSection();
-
   togglePageUpVisibility(window.pageYOffset > window.innerHeight);
-
   toggleHeaderVisibility();
 }
 
