@@ -103,6 +103,25 @@ function scrollTop() {
   });
 }
 
+//collapse or expand the content of a section
+function togglecollapsible(event) {
+  if (!event.target.classList.contains("collapsible-icon")) return;
+
+  const collapsibleElem = event.target.closest(".landing__container");
+
+  for (paragraph of collapsibleElem.querySelectorAll("p")) {
+    if (collapsibleElem.parentElement.classList.contains("expanded")) {
+      paragraph.classList.add("hidden");
+    } else {
+      paragraph.classList.remove("hidden");
+    }
+  }
+
+  event.target
+    .closest(".landing__container")
+    .parentElement.classList.toggle("expanded");
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -144,6 +163,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
   document
     .querySelector(".page__button-up")
     .addEventListener("click", scrollTop);
+
+  // Set sections as active
+  document.addEventListener("scroll", doScrollAdjustments);
+
+  document.querySelector("main").addEventListener("click", togglecollapsible);
 });
 
 // Scroll to section on link click
@@ -156,6 +180,3 @@ function onNavBarClick(event) {
       .scrollIntoView({ behavior: "smooth" });
   }
 }
-
-// Set sections as active
-document.addEventListener("scroll", doScrollAdjustments);

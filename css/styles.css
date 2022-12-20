@@ -40,6 +40,7 @@ h1 {
 }
 
 h2 {
+  margin-top: 0;
   border-bottom: 1px solid #cc1;
   font-family: "Oxygen", Sans-Serif;
   font-size: 3em;
@@ -63,6 +64,9 @@ main {
 
 section {
   position: relative;
+}
+
+section.expanded {
   min-height: 80vh;
 }
 
@@ -150,6 +154,25 @@ section:nth-of-type(even) .landing__container {
   margin-right: 0;
   margin-left: auto;
   text-align: right;
+}
+
+.section__header {
+  display: flex;
+  flex-direction: row;
+}
+
+.collapsible {
+  text-align: left;
+  display: block;
+  margin-bottom: -30px;
+  cursor: pointer;
+}
+.collapsible.align-right {
+  text-align: right;
+}
+
+.collapsible img {
+  width: 25px;
 }
 
 /* Background Circles */
