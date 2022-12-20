@@ -19,6 +19,7 @@
  */
 
 let navigation = [];
+let navigationTimer;
 
 /**
  * End Global Variables
@@ -102,9 +103,14 @@ function toggleHeaderVisibility() {
   const header = document.querySelector(".page__header");
   header.classList.remove("hidden");
 
-  setTimeout(() => {
+  //clearTimeout to avoid timmer is already running down while still scrolling
+  if (navigationTimer) {
+    clearTimeout(navigationTimer);
+  }
+
+  navigationTimer = setTimeout(() => {
     header.classList.add("hidden");
-  }, 3000);
+  }, 1000);
 }
 
 /**
